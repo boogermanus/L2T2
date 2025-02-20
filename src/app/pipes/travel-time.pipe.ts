@@ -6,11 +6,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TravelTimePipe implements PipeTransform {
 
+  private readonly days: number = 86400;
+  private readonly hours: number = 3600;
+  private readonly seconds: number = 60;
   transform(value: number, ...args: unknown[]): string {
-    const days = Math.floor(value / (60 * 60 * 24));
-    const hours = Math.floor((value % (60 * 60 * 24)) / (60 * 60));
-    const minutes = Math.floor((value % (60 * 60)) / 60);
-    const seconds = Math.floor(value % 60);
+    const days = Math.floor(value / this.days);
+    const hours = Math.floor((value % (this.days)) / (this.hours));
+    const minutes = Math.floor((value % (this.hours)) / this.seconds);
+    const seconds = Math.floor(value % this.seconds);
 
     return `${days}d ${hours}h ${minutes}m ${seconds}s`;
   }
