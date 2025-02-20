@@ -4,12 +4,16 @@ import { Observable } from 'rxjs';
 import { IBodySelect } from '../../interfaces/data/ibody-select';
 import { IAcceleration } from '../../interfaces/data/iacceleration';
 import { MatSelectModule } from '@angular/material/select';
+import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-l2-t2',
   standalone: true,
   imports: [
-    MatSelectModule
+    CommonModule,
+    MatSelectModule,
+    MatFormFieldModule
   ],
   templateUrl: './l2-t2.component.html',
   styleUrl: './l2-t2.component.scss'

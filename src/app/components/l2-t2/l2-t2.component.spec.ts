@@ -3,6 +3,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { L2T2Component } from './l2-t2.component';
 import { provideHttpClient } from '@angular/common/http';
 import { DataService } from '../../services/data.service';
+import { MatSelectModule } from '@angular/material/select';
+import { CommonModule } from '@angular/common';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 
 describe('L2T2Component', () => {
   let component: L2T2Component;
@@ -11,10 +14,15 @@ describe('L2T2Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [L2T2Component],
+      imports: [
+        L2T2Component,
+        MatSelectModule,
+        CommonModule,
+        NoopAnimationsModule
+      ],
       providers: [
         provideHttpClient(),
-        DataService
+        DataService,
       ]
     })
     .compileComponents();
@@ -31,5 +39,9 @@ describe('L2T2Component', () => {
 
   it('should have element with id bodySelects', () => {
     expect(compiled.querySelector('#bodySelects')).not.toBeNull();
+  });
+
+  it('should have element with id accelerations', () => {
+    expect(compiled.querySelector('#accelerations')).not.toBeNull();
   });
 });
