@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
 import { IBodySelect } from '../interfaces/data/ibody-select';
-import bodySelect from '../../../public/bodySelect.json'
 import { IAcceleration } from '../interfaces/data/iacceleration';
-import accelerations from '../../../public/accelerations.json';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  private bodySelect: IBodySelect[] = [];
-  private accelerations: IAcceleration[] = [];
+  private bodySelect!: Observable<IBodySelect[]>
+  private accelerations!: Observable<IAcceleration[]>;
 
-  constructor() { 
-    this.bodySelect = bodySelect
-    this.accelerations = accelerations;
+  constructor(private readonly httpClient: HttpClient) { 
+    // this.bodySelect = bodySelect
+    // this.accelerations = accelerations;
+    this.bodySelect = this.httpClient.get<IBodySelect[]>('assets/bodySelect.json')
+    this.accelerations = this.httpClient.get<IAcceleration[]>('assets/accelerations.json');
   }
 
-  public getBodySelects() : IBodySelect[] {
+  public getBodySelects() : Observable<IBodySelect[]> {
     return this.bodySelect;
   }
 
-  public getAccelerations(): IAcceleration[] {
+  public getAccelerations(): Observable<IAcceleration[]> {
     return this.accelerations;
   }
 }
