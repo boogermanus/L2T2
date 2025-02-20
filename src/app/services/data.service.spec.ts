@@ -13,4 +13,13 @@ describe('DataService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should have getBodySelects method', () => {
+    expect(service.getBodySelects).toBeDefined();
+  })
+
+  it('should return body selects', () => {
+    const data = service.getBodySelects();
+    expect(data.length).toBe(10);
+  })
 });
