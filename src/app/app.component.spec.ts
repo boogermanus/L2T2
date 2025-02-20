@@ -24,6 +24,6 @@ describe('AppComponent', () => {
   it('should render title', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Long 2 Travel 2');
+    expect(compiled.querySelector('#title')?.textContent).toContain('Long 2 Travel 2');
   });
 });
