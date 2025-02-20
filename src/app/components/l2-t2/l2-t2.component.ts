@@ -6,6 +6,7 @@ import { IAcceleration } from '../../interfaces/data/iacceleration';
 import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-l2-t2',
@@ -13,7 +14,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   imports: [
     CommonModule,
     MatSelectModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule
   ],
   templateUrl: './l2-t2.component.html',
   styleUrl: './l2-t2.component.scss'
