@@ -28,7 +28,9 @@ export class L2T2Component {
   public body: string = '';
   public acceleration: number = 0;
   public apiData!: Observable<any>;
-  public distance: number = 0;
+  public distanceKm: number = 0;
+  public distanceMeters: number = 0;
+  public time: number = 0;
 
   constructor(
     private readonly dataService: DataService,
@@ -41,7 +43,15 @@ export class L2T2Component {
   public getApiData(): void {
     this.apiService.getBody(this.body)
       .subscribe({
-        next: (data) => this.distance = data?.data?.rows[0]?.positions[0]?.distance?.fromEarth?.km ?? 0
+        next: (data) => { 
+          this.distanceKm = data?.data?.rows[0]?.positions[0]?.distance?.fromEarth?.km ?? 0 
+          this.distanceMeters
+          this.computeTravelTime();
+        }
       });
+  }
+
+  public computeTravelTime(): void {
+    this.time = Math.sqrt(((2 * this.distanceMeters) / this.acceleration));
   }
 }
