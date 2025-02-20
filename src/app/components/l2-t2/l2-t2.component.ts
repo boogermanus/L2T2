@@ -22,6 +22,8 @@ export class L2T2Component {
 
   public bodySelects!: Observable<IBodySelect[]>;
   public accelerations!: Observable<IAcceleration[]>;
+  public body: string = '';
+  public acceleration: number = 0;
 
   constructor(private readonly dataService: DataService) {
     this.bodySelects = this.dataService.getBodySelects();

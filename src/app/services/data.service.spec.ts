@@ -38,5 +38,5 @@ describe('DataService', () => {
     const promise = lastValueFrom(service.getAccelerations());
     const data = await promise;
     expect(data.length).toBeGreaterThan(0);
-  })
+  });
 });

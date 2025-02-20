@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { IBodySelect } from '../interfaces/data/ibody-select';
 import { IAcceleration } from '../interfaces/data/iacceleration';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
+import { IApiKey } from '../interfaces/data/iapi-key';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class DataService {
 
   private bodySelect!: Observable<IBodySelect[]>
   private accelerations!: Observable<IAcceleration[]>;
+  private apiKey!: IApiKey;
 
   constructor(private readonly httpClient: HttpClient) { 
     // this.bodySelect = bodySelect
