@@ -3,7 +3,8 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <mat-form-field>
-                    <mat-select id="bodySelects" placeholder="Destination" [(value)]="body">
+                    <mat-label>Destination</mat-label>
+                    <mat-select id="bodySelects" [(value)]="body">
                         @for(body of bodySelects | async; track body.id) {
                         <mat-option [value]="body.id">{{body.name}}</mat-option>
                         }
@@ -14,7 +15,8 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <mat-form-field>
-                    <mat-select id="accelerations" placeholder="Acceleration" [(value)]="acceleration">
+                    <mat-label>Acceleration</mat-label>
+                    <mat-select id="accelerations" [(value)]="acceleration">
                         @for(accel of accelerations | async; track accel.id) {
                         <mat-option [value]="accel.value">{{accel.id}}</mat-option>
                         }
