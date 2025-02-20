@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ApiService } from '../../services/api.service';
+import { TravelTimePipe } from '../../pipes/travel-time.pipe';
 
 @Component({
   selector: 'app-l2-t2',
@@ -16,7 +17,8 @@ import { ApiService } from '../../services/api.service';
     CommonModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    TravelTimePipe
   ],
   templateUrl: './l2-t2.component.html',
   styleUrl: './l2-t2.component.scss'
@@ -31,6 +33,7 @@ export class L2T2Component {
   public distanceKm: number = 0;
   public distanceMeters: number = 0;
   public time: number = 0;
+  public timeString: string = '';
 
   constructor(
     private readonly dataService: DataService,
@@ -41,11 +44,16 @@ export class L2T2Component {
   }
 
   public getApiData(): void {
+
+    if(this.acceleration === 0) {
+      return;
+    }
+    
     this.apiService.getBody(this.body)
       .subscribe({
         next: (data) => { 
           this.distanceKm = data?.data?.rows[0]?.positions[0]?.distance?.fromEarth?.km ?? 0 
-          this.distanceMeters
+          this.distanceMeters = this.distanceKm * 1000;
           this.computeTravelTime();
         }
       });
