@@ -5,4 +5,9 @@ describe('TravelTimePipe', () => {
     const pipe = new TravelTimePipe();
     expect(pipe).toBeTruthy();
   });
+
+  it('should equal 60s', () => {
+    const pipe = new TravelTimePipe();
+    expect(pipe.transform(60)).toBe('0d 0h 1m 0s');
+  })
 });
