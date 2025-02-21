@@ -18,7 +18,7 @@ import { TravelTimePipe } from '../../pipes/travel-time.pipe';
     MatSelectModule,
     MatFormFieldModule,
     MatInputModule,
-    TravelTimePipe
+    TravelTimePipe,
   ],
   templateUrl: './l2-t2.component.html',
   styleUrl: './l2-t2.component.scss'
@@ -47,14 +47,14 @@ export class L2T2Component {
 
   public getApiData(): void {
 
-    if(this.acceleration === 0) {
+    if (this.acceleration === 0) {
       return;
     }
-    
+
     this.apiService.getBody(this.body)
       .subscribe({
-        next: (data) => { 
-          this.distanceKm = data?.data?.rows[0]?.positions[0]?.distance?.fromEarth?.km ?? 0 
+        next: (data) => {
+          this.distanceKm = data?.data?.rows[0]?.positions[0]?.distance?.fromEarth?.km ?? 0
           this.distanceMeters = this.distanceKm * 1000;
           this.compute();
         }
