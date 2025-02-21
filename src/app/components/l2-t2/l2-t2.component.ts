@@ -32,9 +32,10 @@ export class L2T2Component {
   public apiData!: Observable<any>;
   public distanceKm: number = 0;
   public distanceMeters: number = 0;
-  public timeAtFull: number = 0;
+  public fullBurnTime: number = 0;
   public timeString: string = '';
   public maxVelocity: number = 0;
+  public halfBurnTime: number = 0;
 
   constructor(
     private readonly dataService: DataService,
@@ -61,7 +62,8 @@ export class L2T2Component {
   }
 
   public compute(): void {
-    this.timeAtFull = Math.sqrt(((2 * this.distanceMeters) / this.acceleration));
-    this.maxVelocity = (this.distanceMeters / 2) / (this.timeAtFull / 2)
+    this.fullBurnTime = Math.sqrt(((2 * this.distanceMeters) / this.acceleration));
+    this.maxVelocity = this.acceleration * (this.fullBurnTime / 2);
+    this.halfBurnTime = (this.maxVelocity / this.acceleration) + this.fullBurnTime;
   }
 }

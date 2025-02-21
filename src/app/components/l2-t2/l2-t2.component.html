@@ -44,7 +44,13 @@
             <div class="col-md-4 text-center">
                 <mat-form-field>
                     <mat-label>Travel Time</mat-label>
-                    <input matInput type="text" disabled="true" [value]="timeAtFull | travelTime">
+                    <input matInput type="text" disabled="true" [value]="fullBurnTime | travelTime">
+                </mat-form-field>
+            </div>
+            <div class="col-md-4 text-center">
+                <mat-form-field>
+                    <mat-label>Travel Time w/turn</mat-label>
+                    <input matInput type="text" disabled="true" [value]="halfBurnTime | travelTime">
                 </mat-form-field>
             </div>
         </div>
