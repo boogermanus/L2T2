@@ -42,3 +42,4 @@ testem.log
 Thumbs.db
 apiKey.json
 apiKey.ts
+deploy.bash
