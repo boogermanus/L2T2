@@ -16,7 +16,8 @@
             <div class="col-md-4">
                 <mat-form-field>
                     <mat-label>Acceleration</mat-label>
-                    <mat-select id="accelerations" [(value)]="acceleration" (valueChange)="getApiData()">
+                    <mat-select id="accelerations" [(value)]="acceleration" (valueChange)="getApiData()"
+                        [disabled]="body === ''">
                         @for(accel of accelerations | async; track accel.id) {
                         <mat-option [value]="accel.value">{{accel.id}}</mat-option>
                         }
