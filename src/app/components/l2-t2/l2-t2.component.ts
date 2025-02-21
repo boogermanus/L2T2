@@ -32,8 +32,9 @@ export class L2T2Component {
   public apiData!: Observable<any>;
   public distanceKm: number = 0;
   public distanceMeters: number = 0;
-  public time: number = 0;
+  public timeAtFull: number = 0;
   public timeString: string = '';
+  public maxVelocity: number = 0;
 
   constructor(
     private readonly dataService: DataService,
@@ -54,12 +55,13 @@ export class L2T2Component {
         next: (data) => { 
           this.distanceKm = data?.data?.rows[0]?.positions[0]?.distance?.fromEarth?.km ?? 0 
           this.distanceMeters = this.distanceKm * 1000;
-          this.computeTravelTime();
+          this.compute();
         }
       });
   }
 
-  public computeTravelTime(): void {
-    this.time = Math.sqrt(((2 * this.distanceMeters) / this.acceleration));
+  public compute(): void {
+    this.timeAtFull = Math.sqrt(((2 * this.distanceMeters) / this.acceleration));
+    this.maxVelocity = (this.distanceMeters / 2) / (this.timeAtFull / 2)
   }
 }
