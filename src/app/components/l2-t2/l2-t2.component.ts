@@ -11,17 +11,16 @@ import { ApiService } from '../../services/api.service';
 import { TravelTimePipe } from '../../pipes/travel-time.pipe';
 
 @Component({
-  selector: 'app-l2-t2',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatInputModule,
-    TravelTimePipe,
-  ],
-  templateUrl: './l2-t2.component.html',
-  styleUrl: './l2-t2.component.scss'
+    selector: 'app-l2-t2',
+    imports: [
+        CommonModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        MatInputModule,
+        TravelTimePipe,
+    ],
+    templateUrl: './l2-t2.component.html',
+    styleUrl: './l2-t2.component.scss'
 })
 export class L2T2Component {
 
