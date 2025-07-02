@@ -28,11 +28,9 @@ export class L2T2Component {
   public accelerations!: Observable<IAcceleration[]>;
   public body: string = '';
   public acceleration: number = 0;
-  public apiData!: Observable<any>;
   public distanceKm: number = 0;
   public distanceMeters: number = 0;
   public fullBurnTime: number = 0;
-  public timeString: string = '';
   public maxVelocity: number = 0;
   public halfBurnTime: number = 0;
 
